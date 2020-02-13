@@ -11,4 +11,4 @@ class Room():
         self.w_to = None
 
     def __str__(self):
-        return f"Room: {self.name}"
+        return f"You are in the {self.name}.\n\n{self.desc}"
