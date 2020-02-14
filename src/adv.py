@@ -1,4 +1,6 @@
 from room import Room
+from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -21,6 +23,13 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+item = {
+    "water": Item("water", "Water to drink."),
+    "potion": Item("potion", "Potion to heal."),
+    "flashlight": Item("flashlight", "Flashlight to see in darkness."),
+    "fire": Item("fire", "Fire to keep warm"),
+}
+
 
 # Link rooms together
 
@@ -38,10 +47,12 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player(input("What is your name? "), currentRoom=room['outside'])
 
 # Write a loop that:
 #
 # * Prints the current room name
+print(f"Hello, {player.name}")
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 #
@@ -49,3 +60,19 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+while True:
+    print(player.currentRoom)
+    cmd = input("-> ").lower()
+    if cmd in ["n", "s", "e", "w"]:
+        # move to that room
+        currentRoom = player.currentRoom
+        nextRoom = getattr(currentRoom, f"{cmd}_to")
+        if nextRoom != None:
+            player.currentRoom = nextRoom
+        else:
+            print("You cannot move in that direction")
+    elif cmd == "q":
+        print("Goodbye")
+        exit()
+    else:
+        print("I do not understand that command")
