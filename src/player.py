@@ -5,5 +5,5 @@ class Player():
     def __init__(self, name, currentRoom):
         self.name = name
         self.currentRoom = currentRoom
-    def __str__(self):
-        return f"Player: {self.name} \n{self.currentRoom}"
+    # def __str__(self):
+    #     return f"Player: {self.name} \n{self.currentRoom}"

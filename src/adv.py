@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -20,6 +21,13 @@ to north. The smell of gold permeates the air."""),
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
+}
+
+item = {
+    "water": Item("water", "Water to drink."),
+    "potion": Item("potion", "Potion to heal."),
+    "flashlight": Item("flashlight", "Flashlight to see in darkness."),
+    "fire": Item("fire", "Fire to keep warm"),
 }
 
 
